@@ -17,6 +17,7 @@ public class Meeting extends Event implements Completable {
         this.Location = location;
     }
 
+
     public void complete() {
         boolean complete = true;
     }
