@@ -28,7 +28,7 @@ public class EventsPanel extends JPanel {
             setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
         } else if (event instanceof Deadline) {
-            setBackground(Color.LIGHT_GRAY);
+            setBackground(Color.RED);
             setBorder(BorderFactory.createLineBorder(Color.WHITE));
         }
 

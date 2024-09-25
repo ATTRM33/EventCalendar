@@ -38,7 +38,7 @@ public class AddEventModal extends JDialog {
 
         //event type panel
         formPanel.add(new JLabel("Event Type:"));
-        eventTypeDropDown = new JComboBox<>(new String[]{"Meeting", "Deadline","Other"});
+        eventTypeDropDown = new JComboBox<>(new String[]{"Meeting", "Deadline"});
         formPanel.add(eventTypeDropDown);
 
         //event date
@@ -57,7 +57,7 @@ public class AddEventModal extends JDialog {
         formPanel.add(endTimeField);
 
         //location panel for meetings
-        formPanel.add(new JLabel("Location:"));
+        formPanel.add(new JLabel("Location (Meeting):"));
         locationField = new JTextField();
         toggleLocationField();
         formPanel.add(locationField);
@@ -98,10 +98,12 @@ public class AddEventModal extends JDialog {
         String endTime = endTimeField.getText();
         String location = locationField.getText();
 
+        //this parse the localdate time that reads in as YYYY-MM-DDTHH:00
         LocalDateTime startDateTime = LocalDateTime.parse(eventDate + "T" + startTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         LocalDateTime endDateTime = LocalDateTime.parse(eventDate + "T" + endTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
         Event newEvent;
+        //if event type is a meeting creates a new meeting object with the parameters user enters, else a deadline object
         if (eventType.equals("Meeting")) {
             newEvent = new Meeting(eventName, startDateTime, endDateTime, location);
 
@@ -113,12 +115,16 @@ public class AddEventModal extends JDialog {
         dispose();
     }
 
+    //having trouble getting this to work??
+    //I want to remove the location field if the sort drop down selects anything other than a meeting
     private void toggleLocationField() {
         if (eventTypeDropDown.getSelectedItem().equals("Meeting")) {
             locationField.setEnabled(true);
+            add(locationField);
         } else {
             locationField.setEnabled(false);
             locationField.setText("");
+            locationField.setBackground(Color.DARK_GRAY);
         }
     }
 }
