@@ -107,11 +107,11 @@ public class EventTester {
     public static boolean testCompletable() {
         // complete all the deadlines
         for (Deadline deadline : deadlines) {
-            deadline.complete();
+            deadline.complete(true);
         }
         // complete all the meetings
         for (Meeting meeting : meetings) {
-            meeting.complete();
+            meeting.complete(true);
         }
         // check that the deadlines are complete
         boolean deadlinesPass = Stream.of(deadlines)

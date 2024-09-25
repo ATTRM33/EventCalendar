@@ -28,15 +28,17 @@ public class AddEventModal extends JDialog {
         JPanel formPanel = new JPanel(new GridLayout(6, 2, 10,10));
         formPanel.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
         formPanel.setPreferredSize(new Dimension(panelWidth, panelHeight));
+        formPanel.setBackground(Color.WHITE);
 
         //name panel
         formPanel.add(new JLabel("Event Name:"));
         nameField = new JTextField();
         formPanel.add(nameField);
 
+
         //event type panel
         formPanel.add(new JLabel("Event Type:"));
-        eventTypeDropDown = new JComboBox<>(new String[]{"Meeting", "Deadline"});
+        eventTypeDropDown = new JComboBox<>(new String[]{"Meeting", "Deadline","Other"});
         formPanel.add(eventTypeDropDown);
 
         //event date
@@ -62,7 +64,10 @@ public class AddEventModal extends JDialog {
 
         //add and cancel buttons
         addButton = new JButton("Add");
+        addButton.setBackground(Color.white);
+
         cancelButton = new JButton("Cancel");
+        cancelButton.setBackground(Color.white);
 
         //panel for buttons
         JPanel buttonPanel = new JPanel();

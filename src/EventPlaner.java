@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -13,6 +14,8 @@ public class EventPlaner {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("EventPlanner");
         frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
 
         ArrayList<Event> events = new ArrayList<Event>();
         addDefaultEvents(events);
@@ -27,9 +30,12 @@ public class EventPlaner {
         int currentMonth = LocalDateTime.now().getMonthValue();
         int currentYear = LocalDateTime.now().getYear();
         int currentDay = LocalDateTime.now().getDayOfMonth();
+        int currentHour = LocalDateTime.now().getHour();
+        int currentMinute = LocalDateTime.now().getMinute();
+        int oneHourAhead = LocalDateTime.now().plusHours(1).getHour();
 
         //default events
-        events.add(new Meeting("Quarterly Meeting", LocalDateTime.of(currentYear,currentMonth,currentDay,14,41), LocalDateTime.of(currentYear,currentMonth,currentDay,15,41), "Office"));
+        events.add(new Meeting("Quarterly Meeting", LocalDateTime.of(currentYear,currentMonth,currentDay,currentHour,currentMinute), LocalDateTime.of(currentYear,currentMonth,currentDay,oneHourAhead, currentMinute), "Office"));
         events.add(new Deadline("End of Quarter", LocalDateTime.of(currentYear,currentMonth,30,16,0)));
 
 

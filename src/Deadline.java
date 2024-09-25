@@ -9,15 +9,14 @@ public class Deadline extends Event implements Completable {
         this.setDateTime(deadline);
     }
 
-    public void complete() {
-        this.complete = false;
+    @Override
+    public void complete(boolean complete) {
+        this.complete = complete;
     }
 
     public boolean isComplete() {
         return complete;
     }
 
-    public String details(){
-        return "Deadline: " + getName() + " by " + getDateTime();
-    }
+
 }

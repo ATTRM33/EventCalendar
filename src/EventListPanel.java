@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,14 +27,14 @@ public class EventListPanel extends JPanel {
 
         //control panel
         controlPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        controlPanel.setBackground(Color.GRAY);
+        controlPanel.setBackground(Color.WHITE);
         add(controlPanel, BorderLayout.NORTH);
 
         //display panel
         displayPanel = new JPanel();
-        displayPanel.setBackground(Color.WHITE);
+        displayPanel.setBackground(Color.gray);
         displayPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        displayPanel.setBorder(BorderFactory.createLineBorder(Color.ORANGE));
+        displayPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         JScrollPane displayScrollPane = new JScrollPane(displayPanel);
         add(displayPanel, BorderLayout.CENTER);
 
@@ -41,6 +42,11 @@ public class EventListPanel extends JPanel {
         addEventButton = new JButton("Add Event");
         addEventButton.setFont(new Font("Futura", Font.BOLD, fontSize));
         addEventButton.setLayout(new FlowLayout(FlowLayout.LEFT));
+        addEventButton.setBackground(Color.WHITE);
+        addEventButton.setForeground(Color.BLACK);
+        addEventButton.setFocusPainted(false);
+        addEventButton.setMargin(new Insets(2, 5, 2, 5));
+
         addEventButton.addActionListener(e ->  {
             //opens textform box
             AddEventModal addEventModal = new AddEventModal(null, this);
@@ -52,6 +58,8 @@ public class EventListPanel extends JPanel {
         // sorting drop down box
         sortDropDown = new JComboBox<>(new String[]{"Name","Date","Descending","Oldest"});
         sortDropDown.setFont(new Font("Futura", Font.PLAIN, fontSize));
+        sortDropDown.setBackground(Color.WHITE);
+        sortDropDown.setForeground(Color.BLACK);
         sortDropDown.addActionListener(e -> {
 
             String selection = (String) sortDropDown.getSelectedItem();
@@ -63,6 +71,8 @@ public class EventListPanel extends JPanel {
         //filter checkbox
         filterDisplay = new JCheckBox("Hide Completed");
         filterDisplay.setFont(new Font("Futura", Font.PLAIN, fontSize));
+        filterDisplay.setBackground(Color.WHITE);
+        filterDisplay.setForeground(Color.BLACK);
         filterDisplay.addActionListener(e -> updateDisplay());
         controlPanel.add(filterDisplay);
 

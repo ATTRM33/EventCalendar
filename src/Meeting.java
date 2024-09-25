@@ -15,16 +15,18 @@ public class Meeting extends Event implements Completable {
         this.setDateTime(start);;
         this.endTime = end;
         this.Location = location;
+        this.complete = false;
     }
 
 
-    public void complete() {
-        boolean complete = true;
+    @Override
+    public void complete(boolean complete) {
+        this.complete = complete;
     }
 
     @Override
     public boolean isComplete() {
-        return true;
+        return complete;
     }
 
 
@@ -48,7 +50,4 @@ public class Meeting extends Event implements Completable {
         this.Location = Location;
     }
 
-    public String details() {
-        return "Meeting at " + getLocation() + " from " + getDateTime() + " to " + getEndDateTime();
-    }
 }
