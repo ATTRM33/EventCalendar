@@ -6,8 +6,8 @@ public class EventPlaner {
     public static void main(String[] args) {
 
 
-        final int WINDOW_WIDTH = 800;
-        final int WINDOW_HEIGHT = 600;
+        final int WINDOW_WIDTH = 1200;
+        final int WINDOW_HEIGHT = 900;
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,9 +29,10 @@ public class EventPlaner {
         int currentDay = LocalDateTime.now().getDayOfMonth();
 
         //default events
-        events.add(new Meeting("Quarterly Meeting", LocalDateTime.of(currentYear,currentMonth,currentDay,4,41), LocalDateTime.of(currentYear,currentMonth,currentDay,5,41), "Office"));
-        events.add(new Deadline("End of Quarter", LocalDateTime.of(currentYear,currentMonth,30,3,0)));
+        events.add(new Meeting("Quarterly Meeting", LocalDateTime.of(currentYear,currentMonth,currentDay,14,41), LocalDateTime.of(currentYear,currentMonth,currentDay,15,41), "Office"));
+        events.add(new Deadline("End of Quarter", LocalDateTime.of(currentYear,currentMonth,30,16,0)));
 
 
     }
+
 }

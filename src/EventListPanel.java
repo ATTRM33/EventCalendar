@@ -72,15 +72,20 @@ public class EventListPanel extends JPanel {
 
     //update display
     public void updateDisplay() {
-        displayPanel.removeAll(); // Clear current display
+        displayPanel.removeAll();
 
-        // Add each event as an EventPanel to the displayPanel
+        //add each event as an EventPanel to the displayPanel
         for (Event event : events) {
-            displayPanel.add(new EventsPanel(event)); // EventPanel should correctly display event details
+
+            //if filter is active and event is complete continue skip this
+            if (filterDisplay.isSelected() && event instanceof Completable && ((Completable) event).isComplete()) {
+                continue;
+            }
+            displayPanel.add(new EventsPanel(event));
         }
 
-        displayPanel.revalidate(); // Revalidate the panel to apply changes
-        displayPanel.repaint();    // Repaint the panel to show updated UI
+        displayPanel.revalidate();
+        displayPanel.repaint();
     }
 
     //sorting for events based on selection

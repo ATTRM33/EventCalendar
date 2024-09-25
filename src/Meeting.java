@@ -48,5 +48,7 @@ public class Meeting extends Event implements Completable {
         this.Location = Location;
     }
 
-
+    public String details() {
+        return "Meeting at " + getLocation() + " from " + getDateTime() + " to " + getEndDateTime();
+    }
 }
